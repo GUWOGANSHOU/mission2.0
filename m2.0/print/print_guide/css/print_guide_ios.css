@@ -1,0 +1,107 @@
+html,
+body,
+.warpper {
+  height: 100%;
+  margin: 0;
+  background: url(../img/background.png) no-repeat;
+  background-size:100% 100%;
+}
+.wrapper{
+	display: flex;
+flex-direction: column;
+}
+.prev-arrow img{
+width:.7em;
+padding: 1em 0 0 1em;
+}
+.headline{
+  padding-top: 3em;
+	color:#2AA094;
+	width: 100%;
+	display: flex;
+	height: 1.5em;
+}
+.title1{
+	width: 50%;
+	border-right:#2AA094 solid .1em;
+	text-align: center;
+}
+.title2{
+	width: 50%;
+	text-align: center;
+}
+a{
+	font-family: "微软雅黑";
+}
+a:link,a:visited{
+	color: #2AA094;
+	text-decoration: none;
+}
+.swiper-container {
+      width: 100%;
+      height: 100%;
+      margin-top: 4em;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;.
+      align-items: center;
+      width: 50%;
+    }
+    .swiper-slide img{
+    	width: 20em;
+    	
+    }
+    .step{
+    	position: absolute;
+    	width: 2em;
+    	background-color: white;
+    	top: 0;
+    	left: 0;
+    	height: 2.5em;
+    	border-top-right-radius: .2em;
+    	border-bottom-left-radius: .2em;
+    	border-bottom-right-radius: 1em;
+    	line-height: 2.5em;
+    	font-family: '微软雅黑';
+    	text-align: center;
+    }
+    @media (min-width:320px) {
+	.wrapper{
+		zoom: .8;
+	}
+}
+    @media (min-width:360px) {
+	.wrapper{
+		zoom: .9;
+	}
+}
+    @media (min-width:412px) {
+	.wrapper{
+		zoom: 1.03;
+	}
+}
+    @media (min-width:768px) {
+	.wrapper{
+		zoom: 1.5;
+	}
+}
+    @media (min-width:1024px) {
+	.wrapper{
+		zoom: 2.0;
+	}
+}
+
+

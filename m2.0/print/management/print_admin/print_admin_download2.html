@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<title>print_backstage_download</title>
+		<link rel="stylesheet" type="text/css" href="css/style_download.css" />
+			<script src="../../../js/Jquery/jquery-3.2.0.js"></script>
+		<script src="../../../js/Jquery/session.js"></script>
+				<script src="js/layDate-v5.0.9/laydate/laydate.js"></script>
+		
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="row row1" id="top">
+				<h3 style="text-align: center;color: white;">超级校园帮云打印</h3></div>
+			<!--2 begin-->
+			<div class="row m1">
+				<div class=col-xs-2>
+					<input type="text" class="form-control input-lg" id="text" placeholder="请输入用户号码" />
+				</div>
+				<div class=col-xs-2>
+					<input type="text" class="form-control input-lg" id="date" placeholder="请选择日期" />
+					
+				</div>
+				<div class=col-xs-2>
+					<select class="form-control input-lg" placeholder="状态" />
+					<option>状态</option>
+					</select>
+				</div>
+				<div class=col-xs-3></div>
+				<div class=col-xs-2>
+                     <button type="button" class="btn btn-default btn-sm b2">一区打印店</button>
+				</div>
+				<div class=col-xs-1>
+					<img src="img/rabbit.png" width="70%" height="70%" style="float: right;" />
+				</div>
+			</div>
+			<!--2 end-->
+			<div class="row" id=main1>
+				<div class="row m1" style="padding-left: 27px;">
+					<div class="col-xs-1 c1">
+						&nbsp;
+					</div>
+					<div class="col-xs-2 c3">用户账户</div>
+					<div class="col-xs-2">时间</div>
+					<div class="col-xs-1 c3">文件</div>
+					<div class="col-xs-2">需求</div>
+					<div class="col-xs-1 c5">总计</div>
+					<div class="col-xs-1 c4">单号</div>
+					<div class="col-xs-1">状态</div>
+					<div class="col-xs-1 c6">操作</div>
+				</div>
+				<!--第一个row3开始-->
+				<div class=gdt>
+					<div id="blanck"></div>
+				
+				</div>
+				<div class="row row2">
+					<div style="cursor: pointer" id="allChoose" class="col-xs-1 f2">全选</div>
+					<div class="col-xs-1"> 
+						<button onClick="Batchconduct('download')" type="button"  class="btn btn-default btn-sm b1">批量下载</button>
+					</div>
+					<div class="col-xs-1">
+						<button onClick="Batchconduct('close')" type="button" class="btn btn-default btn-sm b1">批量关闭</button>
+					</div>
+					<div class="col-xs-1">
+						<button onClick="Batchconduct('compelete')" type="button" class="btn btn-default btn-sm b1">批量完成</button>
+					</div>
+					<div class="col-xs-3 p1">
+						<span style="cursor:pointer; " class="f2">1</span>
+						<span style="cursor:pointer; ">2</span>
+						<span style="cursor:pointer; ">3</span>
+						<span style="cursor:pointer; ">4</span>
+						<span style="cursor:pointer; ">5</span>
+						<span style="cursor:pointer; ">6</span>
+						<span style="cursor:pointer; ">7</span>
+						<span style="cursor:pointer; ">8</span>
+						<span style="cursor:pointer; ">9</span>
+						<span style="cursor:pointer; ">10</span>
+					</div>
+					<div class="col-xs-1" style="padding-top: 3px;width: 2%;">
+						<span><input class="form-control input-sm bd1" type="text" placeholder=""></span>
+					</div>
+					<div class="col-xs-1" style="padding-top: 4px;">
+						<button type="button" class="btn btn-default btn-sm b1">GO</button>
+					</div>
+					<div class="col-xs-1 f2">首页</div>
+					<div class="col-xs-1 f2">尾页</div>
+					<div class="col-xs-1"></div>
+				</div>
+			</div>
+
+		</div>
+
+		</div>
+
+
+	</body>
+
+
+<!--
+		   <span style="padding-right: 30px;color:#2AA094;">A4x5</span><span>单面</span>
+						<div style="padding-right: 3px;"><span>第</span><span style="color: #2AA094;">1</span>\页至第<span style="color: #2AA094;">23</span><span>页</span></div>
+						<div style="padding-right: 10px;">缩印要求：无</div>
+						<div style="padding-right: 58px;font-size: 9px;">备注：</div>
+-->
+</html>
+<script>
+
+	
+$(".col-xs-3").children().on("click",function(){
+		console.log($(this).text());
+	$(this).addClass("f2").siblings().removeClass("f2");
+		$(".row3").remove();
+	    GetMsg($(this).text());
+	})
+//function GetState( ){
+//
+//	$.ajax({
+//	url:"../../php/GetMsg.php",   
+//	type:"POST",
+//	dataType:"json",
+//   async:false,
+//	data:{AccepterId:"18259083427",Page:Page,PhoneNumber:"",PromulgateTime:"",MissionState:""},
+//	success:function(data){console.log(data);$.each(data,function(index,comment){
+//		
+//		
+//	}	
+//	}
+		
+function GetMsg(Page){
+	if(Page==null){
+		Page=1;
+	}
+	$.ajax({
+	url:"../../php/GetMsg.php",   
+	type:"POST",
+	dataType:"json",
+   async:false,
+	data:{AccepterId:"18259083427",Page:Page,PhoneNumber:"",PromulgateTime:"",MissionState:""},
+	success:function(data){console.log(data);$.each(data,function(index,comment){
+		
+		ablecolor='#2AA094';
+		disabledcolor='rgba(48,48,48,0.5)';
+		
+	if(comment.missionState==1){
+		missionState='已下载';
+		//可关闭有退款4、可完成2、可下载1
+		
+		closeadble='able';
+		compeleteable='able';
+		downloadadble='able';
+		
+		closecolor=ablecolor;
+		compelecolor=ablecolor;
+		downloadcolor=ablecolor;
+		
+	}else if(comment.missionState==2){
+		missionState='我方已完成'
+		//可关闭有退款4
+		
+		closeadble='able';
+		compeleteable='disabled';
+		downloadadble='disabled';
+		
+		closecolor=ablecolor;
+		compelecolor=disabledcolor;
+		downloadcolor=disabledcolor;
+		
+	}else if(comment.missionState==3){
+		missionState='用户已确定'
+		//可关闭无退款4
+		
+		closeadble='able';
+		compeleteable='disabled';
+		downloadadble='disabled';
+		
+		closecolor=ablecolor;
+		compelecolor=disabledcolor;
+		downloadcolor=disabledcolor;
+		
+	}else if(comment.missionState==0){
+		missionState='未下载'
+		//可关闭有退款4，可下载1
+		
+		closeadble='able';
+		compeleteable='disabled';
+		downloadadble='able';
+		
+		closecolor=ablecolor;
+		compelecolor=disabledcolor;
+		downloadcolor=ablecolor;
+		
+	}else if(comment.missionState==4){
+		missionState='订单已关闭'
+		
+		closeadble='disabled';
+		compeleteable='disabled';
+		downloadadble='disabled';
+		
+			
+		closecolor=disabledcolor;
+		compelecolor=disabledcolor;
+		downloadcolor=disabledcolor;
+		
+	}
+		$("#blanck").before('<div class="row row3">\
+					<div class="col-xs-1 c1 m2 m3 m4">\
+						<div id=checkbox>\
+							<label>\
+            		<input id='+comment.wIDout_trade_no+' type="checkbox" value=""/>\
+            	   </label>\
+						</div>\
+					</div>\
+					<div class="col-xs-2 m2 c3">\
+						<div>'+comment.missionPromulgatorId+'</div>\
+					</div>\
+					<div class="col-xs-2 m2">\
+						<div>'+comment.missionPromulgatorTime+'</div>\
+					</div>\
+					<div class="col-xs-1 c3 m2 c4">\
+						<div>'+comment.missionPos+'</div>\
+					</div>\
+					<div class="col-xs-2 m1 f1">\
+<div>'+comment.missionDescribe+'</div>\
+					</div>\
+					<div class="col-xs-1 m2" style="color: #2AA094;font-size: 16px;">'+comment.missionReward+'￥</div>\
+					<div class="col-xs-1 m2 c4">'+comment.wIDout_trade_no+'</div>\
+					<div class="col-xs-1 m2">'+missionState+'</div>\
+					<div class="col-xs-1 m1">\
+						<button id="download'+comment.wIDout_trade_no+'" '+downloadadble+' style="margin:0 auto;display:block;background:none;border:none;color:'+downloadcolor+';padding-bottom: 5px;"   onclick="conduct(1,'+comment.wIDout_trade_no+')">下载</button>\
+						<button '+closeadble+' style="margin:0 auto;color:'+closecolor+';display:block;background:none;border:none;padding-bottom: 5px;" onclick="conduct(4,'+comment.wIDout_trade_no+')">关闭</button>\
+						<button '+compeleteable+' style="margin:0 auto;color:'+compelecolor+';display:block;background:none;border:none;" onclick="conduct(2,'+comment.wIDout_trade_no+')">完成</button>\
+					</div>')
+	
+	})},
+	error:function(){console.log(1)}   
+})
+	}
+	GetMsg()
+function DownloadFile(wIDout_trade_no){
+		$.ajax({
+	url:"../../php/DownLoadFile.php",   
+	type:"POST",  
+	dataType:"Text",
+	async:false,
+	data:{WIDout_trade_no:wIDout_trade_no},
+	success:function(data){console.log(data);filedata=data;},
+	error:function(){console.log(1)}
+})
+		return filedata;
+}
+function MsgStateUpdate(WIDout_trade_no,State){
+		$.ajax({
+	url:"../../php/MsgStateUpdate.php",   
+	type:"POST",  
+	dataType:"Text", 
+	data:{WIDout_trade_no:WIDout_trade_no,State:State},
+	success:function(data){console.log(data)},
+	error:function(){console.log(1)}
+})
+}
+	MsgStateUpdate()
+	function conduct(state,wIDout_trade_no){
+		
+		switch(state){
+				
+			case 1:r=confirm("您确定要下载吗？"+wIDout_trade_no);
+				
+				if(r){
+					
+				window.open(DownloadFile(wIDout_trade_no));MsgStateUpdate(wIDout_trade_no,state);alert("已下载")
+				
+				}
+				
+				else{
+					
+					//alert('未下载！')
+				
+					}
+				
+				break;
+				 
+			case 2:r=confirm("您确定要完成订单吗？"+"订单号"+wIDout_trade_no);
+				
+				if(r){
+				
+					if(MsgStateUpdate(wIDout_trade_no,state)=='{ExectState:success}'){
+			
+						alert('完成成功');
+						
+                 }
+					
+					else{
+						
+				alert("系统错误，请稍后再试");
+					
+				};
+												
+				};
+				
+				break;
+				
+			case 4:r=confirm("您确定要关闭订单吗？订单号："+wIDout_trade_no);
+				
+				if(r){
+					
+				//	alert(wIDout_trade_no);
+					
+				    MsgStateUpdate(wIDout_trade_no,state);
+					
+					alert("关闭订单成功")
+					
+				};
+				
+				break;
+		}
+		
+		window.location.reload();
+	
+	}
+      
+	
+	   $("input[type=checkbox]").on("click",function(){
+	   
+		   	if( $(this).attr("checked")!="checked"){
+				
+				$(this).attr("checked","checked")
+			
+			}
+			 
+			else{
+				
+				$(this).removeAttr("checked");
+				
+			}
+		   
+	   })
+  
+	  $("#allChoose").on("click",function(){
+		  
+		 $("input[type=checkbox]").each(function(){
+			 
+			 console.log($(this).attr("id"))
+			 
+			if( $(this).attr("checked")!="checked"){
+				
+				$(this).attr("checked","checked")
+			
+			}
+			 
+			else{
+				
+				$(this).removeAttr("checked");
+				
+			}
+			 
+		 })
+		
+	  })
+	  
+  function Batchconduct(Para){
+	  
+	  console.log(Para);
+	  
+	  if(Para=='download'){
+		  
+		        $("input[type=checkbox][checked]").each(function(){
+					
+		  console.log($(this).attr("id"));
+             
+			 
+					
+			conduct(1,$(this).attr("id"));		
+					
+	  })
+				
+	  }else if(Para=='close'){
+		  
+			        $("input[type=checkbox][checked]").each(function(){
+					
+		  console.log($(this).attr("id"));
+          
+			conduct(4,$(this).attr("id"));		
+					
+	  })
+		  
+	  }else if(Para=='compelete'){
+		  
+			        $("input[type=checkbox][checked]").each(function(){
+					 
+		  console.log($(this).attr("id"));
+          
+			conduct(2,$(this).attr("id"));		
+					
+	  })
+		  
+	  } 
+
+  }   
+	
+</script>
+		<script>
+			//执行一个laydate实例
+			laydate.render({  
+				elem: '#date' //指定元素
+				,istime: true
+				,type: 'datetime'
+				,event: 'click'//响应事件。如果没有传入event，则按照默认的click 
+    		  	,format: 'yyyy-MM-dd HH:mm:ss'  
+   			//    festival: true, //显示节日 
+			//	istime: true, //显示时间选项 
+    			,choose: function(datas){ //选择日期完毕的回调 
+				alert('得到：'+datas); 
+			}});
+		</script>

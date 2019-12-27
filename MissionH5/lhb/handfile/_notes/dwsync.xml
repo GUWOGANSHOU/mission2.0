@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="EmailHandle.php" server="120.77.148.216" local="131700102546180189" remote="131527296000000000" Dst="0" />
+<file name="ExpressageHandlhb.php" server="120.77.148.216" local="131700102547122375" remote="131528160000000000" Dst="0" />
+<file name="ExpressageHand.php" server="120.77.148.216" local="131700102547132702" remote="131577061800000000" Dst="0" />
+<file name="TaskAcceptHandle.php" server="120.77.148.216" local="131700102547643762" remote="131577063000000000" Dst="0" />
+<file name="TaskAcceptSubmitHandle.php" server="120.77.148.216" local="131700102548596297" remote="131681852400000000" Dst="0" />
+<file name="Wallethandle.php" server="120.77.148.216" local="131700102549067614" remote="131563228800000000" Dst="0" />
+<file name="Taskdetailhandle.php" server="120.77.148.216" local="131700102549478655" remote="131577063600000000" Dst="0" />
+<file name="bindhandle.php" server="120.77.148.216" local="131700102550461261" remote="131577061200000000" Dst="0" />
+<file name="connect.php" server="120.77.148.216" local="131700102551062868" remote="131502240000000000" Dst="0" />
+<file name="dbconnect.php" server="120.77.148.216" local="131700102551373682" remote="131469408000000000" Dst="0" />
+<file name="insertMsg_AcceptComp.php" server="120.77.148.216" local="131700102551423832" remote="131577064200000000" Dst="0" />
+<file name="insertMsg_accept.php" server="120.77.148.216" local="131700102552516734" remote="131577064200000000" Dst="0" />
+<file name="insertNotice_AccpterCancle.php" server="120.77.148.216" local="131700102553308860" remote="131577064800000000" Dst="0" />
+<file name="insertMsg_proAcceot.php" server="120.77.148.216" local="131700102553479312" remote="131577064800000000" Dst="0" />
+<file name="insertNotice_moneyAccept.php" server="120.77.148.216" local="131700102553479312" remote="131577064800000000" Dst="0" />
+<file name="insertNotice_moneyPromulgater.php" server="120.77.148.216" local="131700102554903394" remote="131577064800000000" Dst="0" />
+<file name="insertWalletId.php" server="120.77.148.216" local="131700102555374325" remote="131674754400000000" Dst="0" />
+<file name="mybillhandle.php" server="120.77.148.216" local="131700102555444641" remote="131577065400000000" Dst="0" />
+<file name="loginhandle.php" server="120.77.148.216" local="131700102555454542" remote="131577065400000000" Dst="0" />
+<file name="mymissionhandleforComplete.php" server="120.77.148.216" local="131700102556868297" remote="131577061800000000" Dst="0" />
+<file name="mymissionhandleforMissionAccepterId.php" server="120.77.148.216" local="131700102557389702" remote="131577062400000000" Dst="0" />
+<file name="mymissionhandleforMissionPromulgatorId.php" server="120.77.148.216" local="131700102557760698" remote="131577062400000000" Dst="0" />
+<file name="notifthandle.php" server="120.77.148.216" local="131700102557760698" remote="131485824000000000" Dst="0" />
+<file name="notifthandleNum.php" server="120.77.148.216" local="131700102559294758" remote="131470272000000000" Dst="0" />
+<file name="routTest.php" server="120.77.148.216" local="131700102559776042" remote="131599597200000000" Dst="0" />
+<file name="personalDataHand.php" server="120.77.148.216" local="131700102559806134" remote="131577063000000000" Dst="0" />
+<file name="personalDataHandForImage.php" server="120.77.148.216" local="131700102559826202" remote="131577063000000000" Dst="0" />
+<file name="taskupdateState.php" server="120.77.148.216" local="131700102561249949" remote="131525568000000000" Dst="0" />
+<file name="taskupdateState_2.php" server="120.77.148.216" local="131700102561741290" remote="131484096000000000" Dst="0" />
+<file name="teskupdateState_3.php" server="120.77.148.216" local="131700102561761333" remote="131484096000000000" Dst="0" />
+<file name="teskupState_3.php" server="120.77.148.216" local="131700102561791411" remote="131525568000000000" Dst="0" />
+<file name="updataPassword.html" server="120.77.148.216" local="131700102563205169" remote="131525568000000000" Dst="0" />
+<file name="updateMissionAcceprt.php" server="120.77.148.216" local="131700102563746610" remote="131484960000000000" Dst="0" />
+<file name="updataPassword.php" server="120.77.148.216" local="131700102563766667" remote="131481504000000000" Dst="0" />
+<file name="updateMissionState_0_accept.php" server="120.77.148.216" local="131700102563786709" remote="131484960000000000" Dst="0" />
+<file name="updateMissionState_4_accept.php" server="120.77.148.216" local="131700102565220521" remote="131525568000000000" Dst="0" />
+<file name="updateMissionState_5_accept.php" server="120.77.148.216" local="131700102565651673" remote="131525568000000000" Dst="0" />
+<file name="withdrawhandle.php" server="120.77.148.216" local="131700102565751987" remote="131486688000000000" Dst="0" />
+</dwsync>

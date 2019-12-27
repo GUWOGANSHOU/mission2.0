@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!---->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<title>print_backstage_login</title>
+		<link rel="stylesheet" type="text/css" href="css/style_login.css" />
+				<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="../../../js/Jquery/jquery-3.2.0.js"></script>
+		<script src="../../../js/Jquery/session.js"></script>
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="col-xs-12" id="div1">
+				<div class="col-xs-offset-4 col-xs-4" style="padding-top: 25px;">
+				<div class="text-center"><img src="img/rabbit.png" / width="40%" height="40%"></div>
+				</div>
+				<div class="col-xs-offset-3 col-xs-6" style="color: #2AA094;font-family: '微软雅黑';text-align: center;padding-bottom: 25px;">
+					<h4>超级校园帮云打印</h4></div>
+				<br />
+				<form id="form-horizontal" class="form-horizontal">
+					<div class="form-group">
+						<div class="col-xs-offset-3 col-xs-6">
+							<input name="PhoneNumber" type="email" class="form-control input-lg" id="exampleInputEmail1" placeholder="账号">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-3 col-xs-6" style="padding-bottom: 15px;">
+							<input name="Password" type="password" class="form-control input-lg" id="exampleInputPassword1" placeholder="密码">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="text-center">
+							<button onclick="login()" class="btn btn-default" id=loginbutton>登录</button></div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script>
+			
+	function login(){
+	$.ajax({
+	url:"../../php/UserData.php",
+	type:"POST",
+	dataType:"Json",
+	data:$("#form-horizontal").serialize(),
+	success:function(data){
+		console.log(data);
+		if(data.MatchState=="success"){
+			
+			$.session.set('PhoneNumber',$("#exampleInputEmail1").val());
+			
+			$.session.set('Password',$("#exampleInputPassword1").val());
+			
+							window.location="print_admin_download.html";
+			
+		}
+	},
+		   error: function(XMLHttpRequest, textStatus, errorThrown) {
+ console.log(XMLHttpRequest.status);
+ console.log (XMLHttpRequest.readyState);
+ console.log (textStatus);
+
+					}
+	})
+	}
+</script>

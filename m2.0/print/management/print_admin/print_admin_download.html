@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<title>print_backstage_download</title>
+		<link rel="stylesheet" type="text/css" href="css/style_download.css" />
+		<script src="../../../js/Jquery/jquery-3.2.0.js"></script>
+		<script src="../../../js/Jquery/session.js"></script>
+		<script src="js/layDate-v5.0.9/laydate/laydate.js"></script>
+		<script src="/Mission2.0/JSAPI/UserDataRead.js"></script>
+		  
+	</head>
+
+	<body>
+
+		<div class="container" >
+			<div class="row row1" id="top">
+				<h3 style="text-align: center;color: white;">超级校园帮云打印</h3></div>
+			<!--2 begin-->
+			<div class="row m1">
+					<div class=col-xs-2>
+					<input id="PhoneNumber" type="text" class="form-control input-lg" id="text" placeholder="用户号码" />
+				</div>
+			  <div class=col-xs-2>
+					<input id="wIDout_trade_no" type="text" class="form-control input-lg" id="text" placeholder="单号筛选" />
+				</div>
+				
+				<div class=col-xs-2>
+					<input type="text" class="form-control input-lg" id="date" placeholder="请选择日期" />
+					
+				</div>
+				<div class=col-xs-2>
+					<select id="State" class="form-control input-lg" placeholder="状态" />
+					<option value=" ">全部</option>
+					<option value="0">未下载</option>
+					<option value="1">已下载</option>
+					<option value="2">我方已完成</option>
+					<option value="3">用户已确认</option>
+					<option value="4">订单已关闭</option>
+					</select>
+				</div>
+				<div class=col-xs-3></div>
+				<div class=col-xs-2>
+                     <button type="button" onClick="logout()" id="name" class="btn btn-default btn-sm b2">一区打印店</button>
+				</div>
+				<div class=col-xs-1>
+					<img id="image" src="img/rabbit.png" width="70%" height="70%" style="display: block;float: right;border-radius: 50%" />
+				</div>
+			</div>
+			<!--2 end-->
+			<div class="row" id=main1>
+				<div class="row m1" style="padding-left: 27px;">
+					<div class="col-xs-1 c1">
+						&nbsp;
+					</div>
+					<div class="col-xs-2 c3">用户账户</div>
+					<div class="col-xs-2">时间</div>
+					<div class="col-xs-1 c3">文件</div>
+					<div class="col-xs-2">需求</div>
+					<div class="col-xs-1 c5">总计</div>
+					<div class="col-xs-1 c4">单号</div>
+					<div class="col-xs-1">状态</div>
+					<div class="col-xs-1 c6">操作</div>
+				</div>
+				<!--第一个row3开始-->
+				<div class=gdt>
+					<div id="blanck"></div>
+				
+				</div>
+				<div class="row row2">
+					<div style="cursor: pointer" id="allChoose" class="col-xs-1 f2">全选</div>
+					<div class="col-xs-1"> 
+						<button onClick="Batchconduct('download')" type="button"  class="btn btn-default btn-sm b1">批量下载</button>
+					</div>
+					<div class="col-xs-1">
+						<button onClick="Batchconduct('close')" type="button" class="btn btn-default btn-sm b1">批量关闭</button>
+					</div>
+					<div class="col-xs-1">
+						<button onClick="Batchconduct('compelete')" type="button" class="btn btn-default btn-sm b1">批量完成</button>
+					</div>
+					<div class="col-xs-3 p1">
+						<span id="init" style="cursor:pointer; " class="f2">1</span>
+						<span style="cursor:pointer; ">2</span>
+						<span style="cursor:pointer; ">3</span>
+						<span style="cursor:pointer; ">4</span>
+						<span style="cursor:pointer; ">5</span>
+						<span style="cursor:pointer; ">6</span>
+						<span style="cursor:pointer; ">7</span>
+						<span style="cursor:pointer; ">8</span>
+						<span style="cursor:pointer; ">9</span>
+						<span style="cursor:pointer; ">10</span>
+					</div>
+					<div class="col-xs-1" style="padding-top: 3px;width: 2%;">
+						<span><input id="PageNum" class="form-control input-sm bd1" type="text" placeholder=""></span>
+					</div>
+					<div class="col-xs-1" style="padding-top: 4px;">
+						<button onclick="changepage()" type="button" class="btn btn-default btn-sm b1">GO</button>
+					</div>
+					<div onclick="changepage(1)" class="col-xs-1 f2">首页</div>
+					<div onClick="changepage(10)" class="col-xs-1 f2">尾页</div>
+					<div id="text" class="col-xs-1"></div>
+				</div>
+			</div>
+
+		</div>
+
+		</div>
+
+
+	</body>
+
+
+<!--
+		   <span style="padding-right: 30px;color:#2AA094;">A4x5</span><span>单面</span>
+						<div style="padding-right: 3px;"><span>第</span><span style="color: #2AA094;">1</span>\页至第<span style="color: #2AA094;">23</span><span>页</span></div>
+						<div style="padding-right: 10px;">缩印要求：无</div>
+						<div style="padding-right: 58px;font-size: 9px;">备注：</div>
+-->
+</html>
+
+<script>
+	
+
+	 function address(PhoneNumber){
+		 	return $.ajax({
+	url:"/Mission2.0/print/php/UserDataforcommence.php",
+	type:"POST",
+	async:false,
+	dataType:"Json",
+	data:{"PhoneNumber":PhoneNumber}
+			}).responseJSON
+			
+			
+	 }
+			
+</script>
+<script>
+	
+	
+	
+	function login(){
+	$.ajax({
+	url:"../../php/UserData.php",
+	type:"POST",
+	dataType:"Json",
+	data:{"PhoneNumber":$.session.get("PhoneNumber"),"Password":$.session.get("Password")},
+	success:function(data){
+		console.log(data);
+		if(data.MatchState=="success"){
+			
+			$("#name").text(data.Username);
+			
+			var str=data.Image;
+		    var re=new RegExp(" ","g");
+			var Newstr=str.replace(re,"+");
+			  $("#image").attr("src",Newstr);
+			
+		}else{
+			
+			window.location="print_admin_login.html"
+		}},
+	error:function(){console.log(1);
+					 window.location="print_admin_login.html"
+					}
+	})
+	}
+	login()
+	function logout(){
+		$.session.clear();
+		window.location.reload();
+	}
+	
+$(".col-xs-3").children().on("click",function(){
+	
+	console.log($(this).text());
+	
+	$(this).addClass("f2").siblings().removeClass("f2");
+	
+		$(".row3").remove();
+	
+	    GetMsg($(this).text(),"","","","");
+	
+	})//分页
+
+function changepage(Para){
+	if(Para==null){
+		
+		
+		
+		if($("#PageNum").val()==""){
+			
+			alert("请输入页数!")
+			
+									 }else{
+										 
+			$(".row3").remove();
+										 
+			GetMsg($("#PageNum").val(),"","","","");
+			
+														 }
+		
+
+		
+	}else{
+		
+		$(".row3").remove();
+		
+		GetMsg(Para,"","","","");
+		
+	}
+
+}
+
+//定向分页
+$("#PhoneNumber").keyup(function(){
+	
+	$(".row3").remove();
+	
+	GetMsg(1,$(this).val(),"","","");
+	
+	console.log($(this).val())
+	
+})//电话筛选
+
+$("#State").click(function(){
+	
+	console.log($(this).children('option:selected').val());
+	
+	$(".row3").remove();
+	
+	if($(this).children('option:selected').val()==" "){$("#init").trigger("click")};
+	
+	GetMsg(1,"","",$(this).children('option:selected').val(),"");
+
+})//状态筛选
+
+$("#State").change(function(){
+	
+	console.log($(this).children('option:selected').val());
+	
+	$(".row3").remove();
+	
+	if($(this).children('option:selected').val()==" "){$("#init").trigger("click")};
+	
+	GetMsg(1,"","",$(this).children('option:selected').val(),"");
+
+})//状态筛选
+
+$("#wIDout_trade_no").keyup(function(){
+	
+	$(".row3").remove();
+	
+	GetMsg(1,"","","",$("#wIDout_trade_no").val());
+	
+})//单号筛选
+
+
+//执行一个laydate实例
+laydate.render({  
+				elem: '#date', //指定元素
+				type: 'date',
+				event: 'click', //响应事件。如果没有传入event，则按照默认的click 
+    			format: 'yyyy-MM-dd', // 分隔符可以任意定义，该例子表示只显示年月 
+   			//    festival: true, //显示节日 
+			 	istime: true, //显示时间选项 
+    			done: function(dates){ //选择日期完毕的回调 
+					
+					$(".row3").remove();
+	
+	GetMsg(1,"",$("#date").val(),"","");
+					
+			}});
+
+
+//日期筛选
+		
+function GetMsg(Page,PhoneNumber,PromulgateTime,MissionState,WIDout_trade_no){
+	if(Page==null){
+		Page=1;
+	}
+
+	$.ajax({
+	url:"../../php/GetMsg.php",   
+	type:"POST",
+	dataType:"Json",
+    async:false,
+	data:{AccepterId:$.session.get("PhoneNumber"),Page:Page,PhoneNumber:PhoneNumber,PromulgateTime:PromulgateTime,WIDout_trade_no:WIDout_trade_no,MissionState:MissionState},
+	success:function(data){console.log(data);$.each(data,function(index,comment){
+		
+		ablecolor='#2AA094';
+		disabledcolor='rgba(48,48,48,0.5)';
+		
+	if(comment.missionState==1){
+		missionState='已下载';
+		//可关闭有退款4、可完成2、可下载1
+		
+		closeadble='able';
+		compeleteable='able';
+		downloadadble='able';
+		
+		closecolor=ablecolor;
+		compelecolor=ablecolor;
+		downloadcolor=ablecolor;
+		
+	}else if(comment.missionState==2){
+		missionState='我方已完成'
+		//可关闭有退款4
+		
+		closeadble='able';
+		compeleteable='disabled';
+		downloadadble='disabled';
+		
+		closecolor=ablecolor;
+		compelecolor=disabledcolor;
+		downloadcolor=disabledcolor;
+		
+	}else if(comment.missionState==3){
+		missionState='用户已确定'
+		//可关闭无退款4
+		
+		closeadble='able';
+		compeleteable='disabled';
+		downloadadble='disabled';
+		
+		closecolor=ablecolor;
+		compelecolor=disabledcolor;
+		downloadcolor=disabledcolor;
+		
+	}else if(comment.missionState==0){
+		missionState='未下载'
+		//可关闭有退款4，可下载1
+		
+		closeadble='able';
+		compeleteable='disabled';
+		downloadadble='able';
+		
+		closecolor=ablecolor;
+		compelecolor=disabledcolor;
+		downloadcolor=ablecolor;
+		
+	}else if(comment.missionState==4){
+		missionState='订单已关闭'
+		
+		closeadble='disabled';
+		compeleteable='disabled';
+		downloadadble='disabled';
+		
+			
+		closecolor=disabledcolor;
+		compelecolor=disabledcolor;
+		downloadcolor=disabledcolor;
+		
+	}
+
+		addressdata = address(comment.missionPromulgatorId)
+			console.log(addressdata)
+		
+		$("#blanck").before('<div class="row row3">\
+					<div class="col-xs-1 c1 m2 m3 m4">\
+						<div id=checkbox>\
+							<label>\
+            		<input id='+comment.wIDout_trade_no+'\
+					    state='+comment.missionState+'\
+                        MissionMsgId='+comment.missionMsgId+'\
+                        MissionReward='+comment.missionReward+'\
+                        MissionAccepterIdTel='+comment.missionAccepterId+'\
+                        missionPromulgatorId='+comment.missionPromulgatorId+'\
+                        Title="打印任务"\
+							type="checkbox" />\
+            	   </label>\
+						</div>\
+					</div>\
+					<div class="col-xs-2 m2 c3">\
+						<div>'+comment.missionPromulgatorId+'</div>\
+					</div>\
+					<div class="col-xs-2 m2">\
+						<div>'+comment.missionPromulgatorTime+'</div>\
+					</div>\
+					<div class="col-xs-1 c3 m2 c4 f1">\
+						<div c>'+comment.fileName+'</div>\
+					</div>\
+					<div class="col-xs-2 m1 f1">\
+<div>'+addressdata.SchoolId+addressdata.Address+addressdata.UserName+'<br/>'+comment.missionDescribe+'</div>\
+					</div>\
+					<div class="col-xs-1 m2" style="color: #2AA094;font-size: 16px;">'+comment.missionReward+'￥</div>\
+					<div class="col-xs-1 m2 c4">'+comment.wIDout_trade_no+'</div>\
+					<div class="col-xs-1 m2">'+missionState+'</div>\
+					<div class="col-xs-1 m1">\
+						<button id="download'+comment.wIDout_trade_no+'" '+downloadadble+' style="margin:0 auto;display:block;background:none;border:none;color:'+downloadcolor+';padding-bottom: 5px;"   onclick="conduct(1,'+comment.wIDout_trade_no+')">下载</button>\
+						<button '+closeadble+' style="margin:0 auto;color:'+closecolor+';display:block;background:none;border:none;padding-bottom: 5px;" onclick="conduct(4,'+comment.wIDout_trade_no+')">关闭</button>\
+						<button '+compeleteable+' style="margin:0 auto;color:'+compelecolor+';display:block;background:none;border:none;" onclick="conduct(2,'+comment.wIDout_trade_no+')">完成</button>\
+					</div>')
+	
+	})},
+	   error: function(XMLHttpRequest, textStatus, errorThrown) {
+ console.log(XMLHttpRequest.status);
+ console.log (XMLHttpRequest.readyState);
+ console.log (textStatus);
+   },
+ 
+})
+	}
+	GetMsg(1," "," "," ","");
+	$("#init").trigger("click");
+	
+function DownloadFile(wIDout_trade_no){
+		$.ajax({
+	url:"../../php/DownLoadFile.php",   
+	type:"POST",  
+	dataType:"Text",
+	async:false,
+	data:{WIDout_trade_no:wIDout_trade_no},
+	success:function(data){console.log(data);filedata=data;},
+	error:function(){console.log(1)}
+})
+		return filedata;
+}
+function MsgStateUpdate(WIDout_trade_no,State){
+	returndata=0
+		$.ajax({
+	url:"../../php/MsgStateUpdate.php",   
+	type:"POST",  
+	dataType:"Json", 
+	async:false,
+	data:{WIDout_trade_no:WIDout_trade_no,State:State},
+	success:function(data){console.log(data);returndata=data},
+	error:function(){console.log(1)}
+})
+		console.log(returndata)
+		return  returndata
+}
+	function conduct(state,wIDout_trade_no){
+		
+		switch(state){
+				
+			case 1:r=1;
+				//confirm("您确定要下载吗？"+wIDout_trade_no)
+				if(r){
+				
+				url=DownloadFile(wIDout_trade_no);
+					
+				var url1=url.replace('#','%23');
+				
+				$('<a>', {
+					href : url1,
+					download: ''
+				}).get(0).click();
+
+				MsgStateUpdate(wIDout_trade_no,state);
+				
+				}
+				
+				else{
+					
+					//alert('未下载！')
+				
+					}
+				
+				break;
+				 
+			case 2:r=confirm("您确定要完成订单吗？"+"订单号"+wIDout_trade_no);
+				
+				if(r){
+					
+					returnstate=MsgStateUpdate(wIDout_trade_no,state);
+				    
+					console.log(returnstate);
+					
+					if(returnstate=='success'){
+			
+						alert('完成成功！');
+						
+                 }else{
+						
+				alert("系统错误，请稍后再试！");
+					
+				};
+												
+				};
+				
+				break;
+				
+			case 4:r=confirm("您确定要关闭订单吗？订单号："+wIDout_trade_no);
+				
+				if(r){
+					
+				//	alert(wIDout_trade_no);
+					
+				    MsgStateUpdate(wIDout_trade_no,state);
+					
+					preState=$("#"+wIDout_trade_no).attr("state");
+					
+					console.log(preState)
+					
+					if(preState==0){
+						
+						Refund(wIDout_trade_no)
+						
+					}else{
+						
+						alert("关闭订单成功")
+						
+					}
+					
+					
+					
+				};
+				
+				break;
+		}
+		
+		window.location.reload();
+	
+	}
+      
+	
+  i=0
+  
+	  $("#allChoose").on("click",function(){
+		  
+		  i=i+1
+		  console.log(i)
+		  
+		 $("input[type=checkbox]").each(function(){
+			 
+			 if(i%2){
+				 $(this).prop("checked",true)
+			 }else{
+	
+				 $(this).prop("checked",false)
+			 }
+			 
+			 
+		 })
+		
+	  })
+	  
+  function Batchconduct(Para){
+	  
+	  console.log(Para);
+	  
+	  
+	  
+	  
+	  
+	  if(Para=='download'){
+		  
+		    
+		  
+		        $("input[type=checkbox]").each(function(){
+					
+					if($(this).prop("checked")==true){
+					
+		    console.log($(this).attr("state"));
+              
+            if($(this).attr("state")==2||$(this).attr("state")==3||$(this).attr("state")==4){
+				
+				alert("订单："+$(this).attr("id")+"已经处理完毕，不能执行下载操作！")
+			
+			}else{
+					
+			conduct(1,$(this).attr("id"));		
+				
+			}
+				
+					}
+					
+	  })
+				
+	  }else if(Para=='close'){
+		  
+			        $("input[type=checkbox]").each(function(){
+						
+							if($(this).prop("checked")==true){
+					
+		  console.log($(this).attr("id"));
+						
+			 if($(this).attr("state")==4){
+				
+				alert("订单："+$(this).attr("id")+"已经处理完毕，不能执行关闭操作！")
+			
+			}else if($(this).attr("state")==0){
+					
+			
+			conduct(4,$(this).attr("id"));	
+				
+		//	Refund($(this).attr("id"));	
+			
+				
+			
+				
+			}else{
+				
+			conduct(4,$(this).attr("id"));		
+				
+			}
+					
+					}
+	  })
+		  
+	  }else if(Para=='compelete'){
+		  
+			        $("input[type=checkbox]").each(function(){
+						
+						if($(this).prop("checked")==true){
+					 
+		  console.log($(this).attr("id"));
+						
+						    if($(this).attr("state")==2||$(this).attr("state")==3||$(this).attr("state")==4){
+				
+				alert("订单："+$(this).attr("id")+"已经处理完毕，不能执行完成操作！")
+			
+			}else if($(this).attr("state")==0){
+				
+				alert("订单："+$(this).attr("id")+"已经还未下载，不能执行完成操作！")
+				
+			}else{
+          
+			conduct(2,$(this).attr("id"));		
+				
+			}
+						
+					}
+					
+	  })
+		  
+	  } 
+
+  }   
+	function Refund(wIDout_trade_no){
+	
+		console.log(1)	
+		
+		console.log(
+			$("#"+wIDout_trade_no).attr("MissionMsgId")+
+			$("#"+wIDout_trade_no).attr("MissionReward")+
+		    $("#"+wIDout_trade_no).attr("MissionAccepterIdTel")+
+		    $("#"+wIDout_trade_no).attr("MissionPromulgatorId")+
+			$("#"+wIDout_trade_no).attr("Title")
+			)
+		
+		url="WIDout_trade_no="+wIDout_trade_no+
+			"&MissionMsgId="+$("#"+wIDout_trade_no).attr("MissionMsgId")+
+			"&MissionReward="+$("#"+wIDout_trade_no).attr("MissionReward")+
+			"&MissionAccepterIdTel="+$("#"+wIDout_trade_no).attr("MissionAccepterIdTel")+
+			"&MissionPromulgatorId="+$("#"+wIDout_trade_no).attr("MissionPromulgatorId")+
+			"&Title="+$("#"+wIDout_trade_no).attr("Title")
+			
+		
+		window.open("/MissionH5/xzf/handfile/RefundQueryforprint.php?"+url);
+		
+
+	}
+	
+	
+		
+			
+			//用户地址
+	
+</script>

@@ -1,0 +1,146 @@
+html,body,.page{width:100%; overflow: auto; margin:0; padding:0; background:#F3F3F3}
+a:link{text-decoration:none}
+a:hover{text-decoration:none}
+.header{ height:40pt; background:#10C091;}
+.dropdown-toggle{font-size:12pt; color:#000; margin-left:20%;}
+.c2{background:#FFF; margin-top:6pt; margin-bottom:6pt;border-bottom:1pt solid #00BB89;border-right:1pt solid #00BB89; border-top:1pt solid #00BB89;border-left:15pt solid #00BB89; width:100%; height:80pt;}
+.c3{background:#FFF; margin-top:6pt;margin-bottom:6pt; border-bottom:1pt solid #7DE1BD;  border-right:1pt solid #7DE1BD; border-top:1pt solid #7DE1BD;border-left:15pt solid #7DE1BD; width:100%; height:80pt;}
+
+.c1{animation: bigger 0.25s 1;-webkit-animation: bigger 0.25s 1; -moz-animation: bigger 0.25s 1;  -o-animation: bigger 0.25s 1;}
+.c2{animation: bigger 0.5s 1;-webkit-animation: bigger 0.5s 1; -moz-animation: bigger 0.5s 1;  -o-animation: bigger 0.5s 1;}
+.c3{animation: bigger 0.75s 1;-webkit-animation: bigger 0.75s 1; -moz-animation: bigger 0.75s 1;  -o-animation: bigger 0.75s 1;}
+
+@-moz-keyframes bigger{
+	0%{transform:scale(0.8)}
+	100%{transform:translate(1);}
+	}
+@-webkit-keyframes bigger{
+		0%{transform:scale(0.8)}
+	100%{transform:translate(1);}
+	}
+@-o-keyframes bigger{
+		0%{transform:scale(0.8)}
+	100%{transform:translate(1);}
+	}
+@keyframesbigger{
+		0%{transform:scale(0.8)}
+	100%{transform:translate(1);}
+	}
+
+
+.inde-foot{
+
+    width: 100%;
+    height: 1.2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: url("../../lhb/images/foot-bg.gif") repeat-x;
+    font-size: .24rem;
+    color:#838485;
+    line-height: 1.2rem;
+}
+.inde-foot>.left{
+    float: left;
+    width: 33.3%;
+    height: 1.2rem;
+    text-indent: .1rem;
+}
+.inde-foot>.middle{
+    float: left;
+    width: 33.3%;
+    height: 1.2rem;
+    text-indent: .1rem;
+    
+}
+.inde-foot>.right{
+    float: right;
+    width: 33.3%;
+    height: .97rem;
+    text-indent: .1rem;
+}
+.inde-foot>.right>img{
+  	display: block;
+	position: relative;
+	top: 0.33rem;
+	margin: auto;
+
+}
+.inde-foot>.middle>img{
+	display: block;
+	position: relative;
+	top:0.4rem;
+	margin: auto;
+	
+}
+.inde-foot>.left>img{
+    width: .4rem;
+    height: .4rem;
+	display: block;
+	position: relative;
+	top:0.4rem;
+	margin: auto;
+	
+}
+	#loading{
+		width: 100%;
+		height: 100%;
+
+	}
+	#loading #loadingcontent{
+		margin:auto !important;
+	}
+	#loading #center{
+		width: 10em;
+		height: 10em;
+		margin: auto;
+	}
+	.trans{ animation: translation 2s;-webit-animation: translation 2s;}
+	@keyframes translation{
+		0% {bottom: -50px}
+		100% {bottom: 0px}
+	}
+	@-webkit-keyframes translation{
+		0% {bottom: -50px}
+		100% {bottom: 0px}
+	}
+.c1content{
+	float:left; width:55pt;overflow:hidden; 
+}
+.grab{
+	width:0px; height:0px; border-width:32pt 30pt 0pt 0pt; border-color:#CCC transparent; border-style:solid;
+}
+.image{
+	 margin-left:5pt;margin-top:7pt;width:50pt; height:50pt; overflow:hidden; border-radius:25pt;
+}
+.detail{
+	float:right; padding-right:12pt; border-bottom:#CCC 1pt solid; width:76%; height:30pt
+}
+.detailtop{
+	width:60%; height:100%; margin-left:-4pt;  float:left
+}
+.MissionTitle{
+	font-size:10pt; margin-top:5pt;color:#000
+}
+.grabtop{
+	width:10pt; height:10pt; margin-top:-30pt;
+}
+.MissionReward{
+	width:20pt; height:20pt; margin-left:5pt; float:right; margin-top:8pt; font-size:10pt; color:#000
+}
+.PayType{
+	width:16pt; height:16pt; float:right; margin-top:7pt; font-size:10pt; color:#000
+}
+.MissionDescribe{
+	postion:relative;float:right; padding-right:4pt; margin-right:0pt; width:76%; height:40pt 
+}
+.MissionDescribeContent{
+	font-size:10pt; color:#999; overflow:hidden;
+}
+.Pos{
+	width:12pt; height:12pt; float:left; margin-left:-3pt
+}
+.PosContent{
+	float:left; margin-top:5pt; margin-left:2pt; text-decoration:underline; font-size:8pt; color:#36AC8C;
+}
+	

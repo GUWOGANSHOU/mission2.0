@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>打印 NO 2</title>
+		<link rel="stylesheet" href="css/style.css">
+
+	</head>
+
+	<body>
+		<form class="wrapper" action="php/print-no2.php" method="POST">
+			<header class="space-between">
+				<div class="prev-arrow" onClick="history.go(-1)">
+					<img src="img/prev-arrow.png">
+				</div>
+				<div class="guide">
+					<img class="mini-avatar" src="img/arrow.png">
+					<span onclick="window.location='print_guide/print_guide_ios.html'">打印指南</span>
+				</div>
+			</header>
+			<div class="main">
+				<div class="avatar-wrapper">
+					<div class="file-avatar"></div>
+					<div class="filename"></div>
+				</div>
+				<div class="page-select">
+					<div>
+						<input placeholder="请输入起始页" name="page-begin" value="1">
+					</div>
+					<span></span>
+					<div>
+						<input class="page-select-end" placeholder="请输入结束页" name="page-end">
+					</div>
+				</div>
+				<div class="selecter">
+					<select name="page-size">
+						<option>A4</option>
+						<option>A3</option>
+					</select>
+				</div>
+				<div class="selecter">
+					<select id="ShopId" name="shopName">
+						<option id="15806037910">祥辉文印(三区进门左手边25#楼外侧)</option>
+						<option id="18259083427">测试店</option>
+					</select>
+					<input name="ShopId" type="hidden" value="15806037910" />
+				</div>
+				<div class="radio space-between">
+					<input id="single-side" value="single" type="radio" name="paper-type" checked>
+					<label for="single-side">单 面</label>
+					<input id="double-side" value="double" type="radio" name="paper-type">
+					<label for="double-side">双 面</label>
+				</div>
+				<div class="radio space-between">
+					<input id="distribution-0" value="0" type="radio" name="distribution-fee">
+					<label for="distribution-0">不配送</label>
+					<input id="distribution-1" value="1" type="radio" name="distribution-fee" checked>
+					<label for="distribution-1">当天配送+1￥</label>
+					<input id="distribution-3" value="3" type="radio" name="distribution-fee">
+					<label for="distribution-3">立即配送+3￥</label>
+				</div>
+				<div class="copies-number">
+					<span>份数</span>
+					<span class="minus">-</span>
+					<input type="text" value="1" name="num">
+					<span class="plus">+</span>
+				</div>
+				<div class="pro-setting space-between">
+					<span>单面：0.15￥ 双面：0.2￥</span>
+					<button class="green-button" data-open="0" type="button">高级设置</button>
+				</div>
+				<div class="pro-setting-detail">
+					<div class="list-option space-between radio">
+						<input id="list-option-no" value="1" type="radio" name="list-option" checked>
+						<label for="list-option-no">无缩印要求</label>
+						<input id="list-option-6" value="6" type="radio" name="list-option">
+						<label for="list-option-6">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </label>
+						<input id="list-option-9" value="9" type="radio" name="list-option">
+						<label for="list-option-9">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </label>
+					</div>
+					<div class="radio space-between">
+						<input id="colorless" value="1" type="radio" name="paper-color" checked>
+						<label for="colorless">黑白</label>
+						<input id="colorful" value="2" type="radio" name="paper-color">
+						<label for="colorful">彩色</label>
+					</div>
+				</div>
+			</div>
+			<div class="prev-button">
+				<div class="light-button" onClick="window.location='print-no1.html'">上一步</div>
+			</div>
+			<footer>
+				<div class="total">总计： ￥<span></span></div>
+				<div>
+					<input class="priceinput" value="" id="address" name="address" type="hidden"/>
+					<input type="submit" class="green-button" value="确定">
+				</div>
+			</footer>
+		</form>
+		<script src="./js/main.js"></script>
+		<script>
+			no2()
+		</script>
+		<script src="../js/Jquery/jquery-3.2.0.js"></script>
+
+		<script>
+			jQuery.noConflict()
+			jQuery(function($) {
+				//  $("#address").val($.session.get("Address"))
+				$("#ShopId").change(function() {
+					$("input[name=ShopId]").val($(this).children('option:selected').attr("id"));
+					console.log($(this).children('option:selected').attr("id"));
+				})
+			})
+		</script>
+	</body>
+
+</html>

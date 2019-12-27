@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>打印 NO 1</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <form class="wrapper" action="php/print-no1.php" method="POST" enctype="multipart/form-data">
+    <input type="hidden" id="phoneNumber" value="" />
+    <header class="space-between">
+      <div onClick="window.location='/MissionH5/lhb/PHP/TaskIssueType.php'" class="prev-arrow" >
+        <img src="img/prev-arrow.png">
+      </div>
+      <div class="guide">  
+        <img class="mini-avatar" src="img/arrow.png">
+        <span onclick="window.location='print_guide/print_guide_ios.html'">打印指南</span>
+      </div>
+    </header>
+    <div class="main">
+      <div class="avatar-wrapper">
+        <img class="avatar" src="img/test.png">
+      </div>
+      <div class="file-select">
+        <div class="plus">+</div>
+        <div class="icon"></div>
+        <div class="info tip">请选择文件</div>
+        <div class="info filename"></div>
+        <input type="file" name="file" id="file">
+      </div>
+      <div class="next">
+        <input type="submit" class="green-button" value="下一步">
+      </div>
+    </div>
+    <input name="address" type="hidden">
+  </form>
+  <script src="./js/main.js"></script>
+   
+  <script>
+    no1()
+  </script>
+   <script src="/MissionH5/js/Jquery/jquery-3.2.0.js"></script>
+	<script src="/Mission2.0/JSAPI/UserDataRead.js"></script>
+	<script src="/MissionH5/js/Jquery/session.js"></script>
+</body>
+
+</html>
+<script>
+		var UserDataRead=new UserDataRead();
+	var UserDataViaPhoneNumber=UserDataRead.UserDataViaPhoneNumber($.session.get("PhoneNumber"));
+
+    console.log(UserDataViaPhoneNumber[0].SchoolId+UserDataViaPhoneNumber[0].Address);
+	console.log($.session.get("PhoneNumber"))	
+	$.session.set("SchoolId",UserDataViaPhoneNumber[0].SchoolId)
+		$.session.set("Address",UserDataViaPhoneNumber[0].Address)
+	$("input[name=address]").val(UserDataViaPhoneNumber[0].Address)
+	if(UserDataViaPhoneNumber[0].SchoolId==""){
+		alert("请前往个人中心完善学校和宿舍信息！");
+		window.location='../../MissionH5/hbl/PHP/personalData.php';  
+	}else if(UserDataViaPhoneNumber[0].Address==""){
+		alert("请前往个人中心完善学校和宿舍信息！");
+		window.location='../../MissionH5/hbl/PHP/personalData.php'; 
+	}
+
+</script>

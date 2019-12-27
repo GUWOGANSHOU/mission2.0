@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>print_guide_ios</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+				<!-- Link Swiper's CSS -->
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/print_guide_ios.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="space-between">
+				<div class="prev-arrow" onclick="window.location='../print-no1.html'">
+					<img src="img/prev-arrow.png" />
+				</div>
+			</header>
+			<div class="headline">
+				<div class="title1">
+					<a href="print_guide_ios.html" style="text-decoration: underline;">ios</a>
+				</div>
+				<div class="title2">
+					<a href="print_guide_android.html">Android</a>
+				</div>
+			</div>
+			<!-- Swiper -->
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="img/ios 1.png"></div>
+					<div class="swiper-slide">
+					<div class="step">1</div>
+					<img src="img/ios no.1.png"></div>
+					<div class="swiper-slide">
+						<div class="step">2</div>
+						<img src="img/ios no.2.png"></div>
+					<div class="swiper-slide">
+						<div class="step">3</div>
+						<img src="img/ios no.3.png"></div>
+					<div class="swiper-slide">
+						<div class="step">4</div>
+						<img src="img/ios no.4.png"></div>
+					<div class="swiper-slide">
+						<div class="step">5</div>
+						<img src="img/ios no.5.png"></div>
+					<div class="swiper-slide">
+						<div class="step">6</div>
+						<img src="img/ios no.6.png"></div>
+					<div class="swiper-slide">
+						<div class="step">7</div>
+						<img src="img/ios no.7.png"></div>
+					<div class="swiper-slide">
+						<img src="img/ios end.png"></div>
+				</div>
+				<!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+	</body>
+	
+</html>
